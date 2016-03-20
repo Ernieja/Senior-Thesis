@@ -13,24 +13,18 @@ print.xtable.booktabs <- function(x){
   
 }
 
-## regression model for nonadult data
+## prepare the nonadult data
 
 
-setwd("C:/Users/Irene/SkyDrive/Documents/thesis/Data/RStudio/data")
 afterlife.data <- read.csv("DataFile_20151010.reformatted.csv")
 
-## filter for non-adults
-
+#filter for non-adults
 afterlife.childdata <- filter(afterlife.data, Adult == 0)
- 
 
-## remove variables irrelevant to nonadults
-
+#remove variables irrelevant to nonadults
 afterlife.childdata <- afterlife.childdata[,c(3,6,7,8,9,16,17,20,27,29,31)]
 
-
-## convert all necessary variables to factor types
-
+#convert all necessary variables to factor types
 afterlife.childdata[,c(1,2,7,9,10,11)] <- colwise(as.factor)(afterlife.childdata[,c(1,2,7,9,10,11)])
 
 

@@ -7,11 +7,11 @@ require(tidyr)
 require(plyr)
 require(ggthemes)
 
-setwd("C:/Users/Irene/SkyDrive/Documents/thesis/Completed/R/data")
 afterlife.data <- read.csv("DataFile_20151010.reformatted.csv")
 
 
 ## I want to compare overall belief scores, grouped by condition and age group
+
 
 belief.data <- afterlife.data %>% select(Part, Prime, Adult, Overall_Summ)
 
