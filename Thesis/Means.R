@@ -1,11 +1,11 @@
-require(RCurl)
-require(dplyr)
-require(ggplot2)
-require(reshape2)
-require(grid)
-require(tidyr)
-require(plyr)
-require(ggthemes)
+library(RCurl)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(grid)
+library(tidyr)
+library(plyr)
+library(ggthemes)
 
 afterlife.data <- read.csv("DataFile_20151010.reformatted.csv")
 
@@ -13,13 +13,13 @@ afterlife.data <- read.csv("DataFile_20151010.reformatted.csv")
 ## I want to compare overall belief scores, grouped by condition and age group
 
 
-belief.data <- afterlife.data %>% select(Part, Prime, Adult, Overall_Summ)
+belief.data <- afterlife.data %>% select(Part, Prime, Adult, Belief_Score)
 
 #call ddply() to organize summarized data and corresponding means, SD, and SE
 cdata1 <- ddply(belief.data, c("Prime", "Adult"), summarise,
-               N = sum(!is.na(Overall_Summ)),
-               mean = mean(Overall_Summ, na.rm = TRUE),
-               sd = sd(Overall_Summ, na.rm = TRUE),
+               N = sum(!is.na(Belief_Score)),
+               mean = mean(Belief_Score, na.rm = TRUE),
+               sd = sd(Belief_Score, na.rm = TRUE),
                se = sd / sqrt(N)
 )
 
@@ -51,13 +51,13 @@ ggplot(cdata1, aes(x=Prime, y=mean, fill=Prime)) +
   facet_grid(.~Adult, labeller=age_lab)+
   scale_x_discrete(limits=prime_lab, labels=c("Natural", "Supernatural"))+
   theme_pander()+
-  theme(plot.title = element_text(size=25, face="bold", vjust=1),
-        axis.title.x=element_text(size=25, face="bold", vjust=0),
-        axis.title.y=element_text(size=25, face="bold", vjust=1),
-        axis.text.x=element_text(size = 23, vjust = 1),
-        axis.text.y=element_text(size = 23),
+  theme(plot.title = element_text(size=22, face="bold", vjust=1),
+        axis.title.x=element_text(size=22, face="bold", vjust=0),
+        axis.title.y=element_text(size=22, face="bold", vjust=1),
+        axis.text.x=element_text(size = 20, vjust = 1),
+        axis.text.y=element_text(size = 20),
         legend.position="none",
-        strip.text.x=element_text(size=25, face = "bold", vjust = .1)
+        strip.text.x=element_text(size=22, face = "bold", vjust = .1)
   )
   
                 

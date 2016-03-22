@@ -1,4 +1,4 @@
-Part,Age,Age_Group,Adult,Country,Prime,HDT,Bio_SummScore,Psych_SummScore,TotalCessation,MoreMind,MoreBody,EqualMindBody,ResponseType,BeliefLevel,Overall_Summ,Religion,Religion_edited,Religiosity,RB_Summ,RF_Summ,Intrinsic_Summ,Extrinsic_Summ,Es_Summ,Ep_Summ,RC_Summ,PI_1,CRT_Score,Education,Ethnicity,Income,Political
+Part,Age,Age_Group,Adult,Country,Prime,HDT,Bio_SummScore,Psych_SummScore,TotalCessation,MoreMind,MoreBody,EqualMindBody,ResponseType,BeliefLevel,Belief_Score,Religion,Religion_edited,Religiosity,ReligiousBehavior_Score,ReligiousFund_Score,Intrinsic_Score,Extrinsic_Summ,ExtrinsicSocial_Score,ExtrinsicPersonal_Score,ReligiousCommit_Score,PoliticalID,CRT_Score,Education,Ethnicity,Income,Political
 1,8,1,0,1,2,54,5,5,0,0,0,1,4,3,10,4,Christian,2,18,,,,,,,2,,6,4,4,
 2,8,1,0,1,1,14,0,3,0,1,0,0,2,2,3,,,,,,,,,,,,,,,,
 3,11,1,0,1,2,104,0,3,0,1,0,0,2,2,3,4,Christian,2,9,,,,,,,4,,6,4,5,

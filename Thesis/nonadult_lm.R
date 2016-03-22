@@ -1,17 +1,10 @@
-## function for printing a pretty table in latex later
+library(plyr)
+library(dplyr)
+library(stats)
+library(ggplot2)
+library(knitr)
+library(xtable)
 
-print.xtable.booktabs <- function(x){
-  
-  print(xtable(x),
-        floating=F,
-        hline.after=NULL,
-        add.to.row=list(pos=list(-1,0, nrow(x)),
-                        command=c(
-                          '\\toprule\n',
-                          '\\midrule\n',
-                          '\\bottomrule\n')))
-  
-}
 
 ## prepare the nonadult data
 
@@ -78,6 +71,22 @@ overall.child.model2 <- lm(Overall_Summ ~ Prime + HDT + RB_Summ +
 summary(overall.child.model1) #better model
 summary(overall.child.model2)
 
+
+
+## function for printing a pretty table in latex later
+
+print.xtable.booktabs <- function(x){
+  
+  print(xtable(x),
+        floating=F,
+        hline.after=NULL,
+        add.to.row=list(pos=list(-1,0, nrow(x)),
+                        command=c(
+                          '\\toprule\n',
+                          '\\midrule\n',
+                          '\\bottomrule\n')))
+  
+}
 
 child.lm.table <- xtable(summary(overall.child.model1))
 print.xtable.booktabs(child.lm.table)

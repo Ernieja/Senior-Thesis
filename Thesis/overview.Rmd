@@ -1,0 +1,121 @@
+---
+title: "Senior Thesis"
+subtitle: 'Conceptualizing Death: How Individual Differences Influence Belief in the
+  Afterlife'
+output: html_document
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(stats)
+library(xtable)
+read_chunk("adult_lm.R")
+```
+
+***
+### Irene Jea
+<br>
+
+
+## **Where did my data come from?**
+***
+Using a combination of online questionnaires and in-person interviews, I *painstakingly* collected data from 114 participants over the course of several months. 
+
+The resulting demographic information, political/religious beliefs, and afterlife belief scores are stored in the accompanying CSV file.
+
+<br>
+
+## **What libraries were used?**
+***
+- **stats**: needed to calculate correlations and perform regression analysis
+- **plyr and dplyr**: used to clean and organize data
+- **ggplot2**: plotting
+- **xtable**: saves a lot of frustration when formatting LaTeX tables
+
+<br>
+
+## **Preparing the data**
+***
+```{r echo=FALSE}
+<<get_data>>
+```
+
+#### Decide which variables to include
+I completed my study having collected `r ncol(afterlife.data)` measures. In hindsight, however, many don't play into a person's afterlife belief. I only want to incorporate variables that are relevant/important (backed by research, theories, etc.). 
+<br>
+
+```{r}
+<<prepare_data>>
+```
+<br>
+
+#### What's left are the measures I believe are the best predictors for afterlife belief.
+```{r message=FALSE, echo=FALSE}
+colnames(afterlife.adultdata)
+```
+<br>
+
+#### Check for multicollinearity and get rid of offenders.
+
+<br>
+
+Religious Behavior needs to go
+
+```{r echo=FALSE, message=FALSE}
+ggplot(afterlife.adultdata, aes(x=ReligiousBehavior_Score, y = ReligiousFund_Score)) + geom_point()
+```
+r = `r cor(afterlife.adultdata$ReligiousBehavior_Score, afterlife.adultdata$ReligiousFund_Score)`
+
+<br>
+
+Religious Commitment needs to go
+
+```{r echo=FALSE, message=FALSE}
+ggplot(afterlife.adultdata, aes(x=ReligiousCommit_Score, y = ReligiousFund_Score)) + geom_point()
+```
+r = `r cor(afterlife.adultdata$ReligiousCommit_Score, afterlife.adultdata$ReligiousFund_Score)`
+<br>
+<br>
+
+#### Here I realize that my data is regrettably sparse. I need to modify some of the variable groups so they are less specific.
+
+```{r}
+<<mutate_var>>  
+```
+<br>
+
+#### Data is ready! Variables to include in model:
+
+```{r include=FALSE}
+<<corr>>
+```
+```{r echo=FALSE}  
+colnames(afterlife.adultdata)
+```
+
+<br>
+
+## **Building the regression models**
+***
+#### My study involved a priming condition, so I want to compare a model that accounts for prime interactions with one that does not.
+<br>
+
+```{r message=FALSE, echo=FALSE}
+<<lm>>
+```
+
+<br>
+
+#### xtable works wonders for converting R tables into LaTeX format
+
+```{r}
+<<xtable>>
+<<print>>
+```
+
+
+
+
