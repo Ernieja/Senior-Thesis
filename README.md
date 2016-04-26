@@ -6,6 +6,6 @@ Research shows that, despite their glaring contradictions, natural and supernatu
 
 <br>
 
-The following uploads pertain to the code underlying this project's linear regression modeling.
+The following uploads pertain to the R code underlying this project's linear regression modeling.
 
 To see the properly rendered HTML page, click [here](http://htmlpreview.github.io/?https://github.com/ernieja/SeniorThesis/blob/master/Thesis/overview.html)
